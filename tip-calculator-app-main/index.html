@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="logo"></div>
+      </header>
+      <section class="paper">
+        <form name="tip-form" action="#">
+          <div class="controls">
+            <div class="group" id="bill">
+              <label class="block" for="bill-amount">Bill</label>
+              <div class="input-group">
+                <div class="input-prefix dollar"></div>
+                <input
+                  type="number"
+                  name="bill-amount"
+                  id="bill-amount"
+                  class="input"
+                  placeholder="0.00"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="group" id="tip">
+              <label class="block" for="tip-button-group">Select Tip %</label>
+              <div class="btn-grp">
+                <label class="btn radio">
+                  <input
+                    type="radio"
+                    name="tip-percent"
+                    id="tip-percent-5"
+                    value="0.05"
+                  />
+                  <span class="checkmark">5%</span>
+                </label>
+                <label class="btn radio">
+                  <input
+                    type="radio"
+                    name="tip-percent"
+                    id="tip-percent-10"
+                    value="0.1"
+                  />
+                  <span class="checkmark">10%</span>
+                </label>
+                <label class="btn radio">
+                  <input
+                    type="radio"
+                    name="tip-percent"
+                    id="tip-percent-15"
+                    value="0.15"
+                  />
+                  <span class="checkmark">15%</span>
+                </label>
+                <label class="btn radio">
+                  <input
+                    type="radio"
+                    name="tip-percent"
+                    id="tip-percent-25"
+                    value="0.25"
+                  />
+                  <span class="checkmark">25%</span>
+                </label>
+                <label class="btn radio">
+                  <input
+                    type="radio"
+                    name="tip-percent"
+                    id="tip-percent-50"
+                    value="0.5"
+                  />
+                  <span class="checkmark">50%</span>
+                </label>
+                <div>
+                  <input
+                    id="custom-tip"
+                    name="custom-tip"
+                    type="text"
+                    class="btn input"
+                    placeholder="0"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="group" id="people">
+              <label for="num-people" class="block">Number of People</label>
+              <div class="input-group">
+                <div class="input-prefix person"></div>
+                <input
+                  type="number"
+                  name="num-people"
+                  id="num-people"
+                  class="input"
+                  value="1"
+                  autocomplete="off"
+                />
+                <span class="error-message"
+                  >Number of people must be more than 0</span
+                >
+              </div>
+            </div>
+          </div>
+          <div id="result">
+            <div class="result-group">
+              <label class="block"
+                ><span class="highlight block">Tip Amount</span> / person</label
+              >
+              <div class="output" id="tip-per-person">$0.00</div>
+            </div>
+            <div class="result-group">
+              <label class="block"
+                ><span class="highlight block">Total</span> / person</label
+              >
+              <div class="output" id="total-per-person">$0.00</div>
+            </div>
+            <div class="result-group">
+              <button
+                class="btn btn-active"
+                id="reset"
+                type="reset"
+                name="reset"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">August Duet</a>.
+      </div>
+    </main>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
