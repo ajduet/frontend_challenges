@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
 
     <link
       rel="icon"
@@ -27,7 +27,23 @@
       }
     </style>
   </head>
-  <body class="bg-slate-100 h-screen">
+  <body class="bg-slate-100 h-screen flex flex-col">
+    <nav class="flex items-center">
+      <a href="../" class="text-gray-700 flex items-center">
+        <svg
+          class="h-5 w-5 mr-1 transform rotate-180"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.707 14.707a1 1 0 010-1.414L10.293 10 7.707 7.414a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414 0z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        Back
+      </a>
+    </nav>
     <main class="flex justify-center items-center h-full">
       <div
         class="flex bg-slate-50 flex-col sm:flex-row sm:mx-auto rounded-2xl shadow-2xl"
@@ -117,7 +133,8 @@
             </div>
           </div>
           <button
-            class="outline-none bg-blue-900 text-white p-3 border-none rounded-full md:mt-8 mt-4"
+            type="button"
+            class="outline-none bg-blue-900 text-white p-3 border-none rounded-full md:mt-8 mt-4 hover:bg-blue-700"
           >
             Continue
           </button>
