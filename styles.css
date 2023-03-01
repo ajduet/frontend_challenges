@@ -722,6 +722,18 @@ video {
   width: 45%;
 }
 
+.w-\[60ch\] {
+  width: 60ch;
+}
+
+.w-\[40ch\] {
+  width: 40ch;
+}
+
+.w-\[20ch\] {
+  width: 20ch;
+}
+
 .max-w-\[90\%\] {
   max-width: 90%;
 }
