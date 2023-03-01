@@ -646,6 +646,22 @@ video {
   height: 3rem;
 }
 
+.h-44 {
+  height: 11rem;
+}
+
+.max-h-44 {
+  max-height: 11rem;
+}
+
+.max-h-16 {
+  max-height: 4rem;
+}
+
+.max-h-24 {
+  max-height: 6rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -742,6 +758,10 @@ video {
   max-width: 80%;
 }
 
+.max-w-\[260px\] {
+  max-width: 260px;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -821,6 +841,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-clip {
+  overflow: clip;
 }
 
 .rounded-lg {
@@ -1339,5 +1363,9 @@ video {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
