@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      label.selected {
+        background-color: hsl(25, 97%, 53%);
+        color: white;
+      }
+
+      label:hover:is(.selected) {
+        background-color: hsl(25, 97%, 53%);
+        color: white;
+        position: relative;
+      }
+
+      label:hover:is(.selected)::before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: hsl(0, 0%, 100%);
+        opacity: 0.5;
+        z-index: 10000;
+        border-radius: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="flex h-screen justify-center items-center font-overpass px-5">
+      <div class="rounded-3xl p-10 bg-very-dark-blue text-white sm:max-w-lg">
+        <!-- Rating state start -->
+
+        <div class="flex flex-col gap-10" id="form-view">
+          <span
+            id="icon"
+            class="bg-[url('interactive-rating-component/images/icon-star.svg')] w-10 h-10 rounded-full bg-dark-blue bg-no-repeat bg-center"
+          ></span>
+          <h2 class="text-white text-2xl font-bold">How did we do?</h2>
+          <p class="text-[15px] text-light-grey">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <form id="rating-form" class="flex flex-col gap-10">
+            <div class="flex justify-evenly items-center">
+              <label
+                class="w-12 h-12 rounded-full bg-dark-blue text-light-grey flex flex-col justify-center items-center cursor-pointer hover:bg-medium-grey hover:text-whiten mx-1 sm:mx-0"
+                ><input
+                  type="radio"
+                  name="rating"
+                  class="hidden"
+                  value="1"
+                />1</label
+              ><label
+                class="w-12 h-12 rounded-full bg-dark-blue text-light-grey flex flex-col justify-center items-center cursor-pointer hover:bg-medium-grey hover:text-whiten mx-1 sm:mx-0"
+                ><input
+                  type="radio"
+                  name="rating"
+                  class="hidden"
+                  value="2"
+                />2</label
+              ><label
+                class="w-12 h-12 rounded-full bg-dark-blue text-light-grey flex flex-col justify-center items-center cursor-pointer hover:bg-medium-grey hover:text-whiten mx-1 sm:mx-0"
+                ><input
+                  type="radio"
+                  name="rating"
+                  class="hidden"
+                  value="3"
+                />3</label
+              ><label
+                class="w-12 h-12 rounded-full bg-dark-blue text-light-grey flex flex-col justify-center items-center cursor-pointer hover:bg-medium-grey hover:text-whiten mx-1 sm:mx-0"
+                ><input
+                  type="radio"
+                  name="rating"
+                  class="hidden"
+                  value="4"
+                />4</label
+              ><label
+                class="w-12 h-12 rounded-full bg-dark-blue text-light-grey flex flex-col justify-center items-center cursor-pointer hover:bg-medium-grey hover:text-whiten mx-1 sm:mx-0"
+                ><input
+                  type="radio"
+                  name="rating"
+                  class="hidden"
+                  value="5"
+                />5</label
+              >
+            </div>
+            <div class="flex justify-center items-center">
+              <button
+                type="submit"
+                class="bg-orange rounded-3xl self-center uppercase py-2 w-[90%] disabled:bg-opacity-70"
+                disabled
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Rating state end -->
+
+        <!-- Thank you state start -->
+
+        <div class="flex-col hidden gap-10" id="submitted-view">
+          <div class="self-center">
+            <img
+              src="images/illustration-thank-you.svg"
+              alt="Image with a electronic device with a card and circle orbiting it"
+            />
+          </div>
+          <!-- Add rating here -->
+          <div
+            class="rounded-3xl bg-dark-blue flex justify-center self-center py-2 w-[50%]"
+          >
+            <p class="text-orange">
+              You selected <span id="rating">#</span> out of 5
+            </p>
+          </div>
+          <h2 class="text-white text-2xl font-bold self-center">Thank you!</h2>
+          <p class="text-[15px] text-light-grey">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+          <!-- Thank you state end -->
+        </div>
+      </div>
+    </main>
+    <script>
+      const form = document.querySelector("#rating-form");
+      const submittedView = document.querySelector("#submitted-view");
+
+      let lastSelected = null;
+      let rating = 0;
+
+      form.addEventListener("change", ({ target: { parentNode } }) => {
+        const formData = new FormData(form);
+        rating = formData.get("rating");
+
+        if (lastSelected) {
+          lastSelected.classList.remove("selected");
+          lastSelected = parentNode;
+          lastSelected.classList.add("selected");
+        } else {
+          lastSelected = parentNode;
+          lastSelected.classList.add("selected");
+        }
+
+        if (rating) {
+          document.querySelector("button").disabled = false;
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        rating = formData.get("rating");
+
+        if (rating) {
+          document.querySelector("#form-view").classList.add("hidden");
+          document.querySelector("#submitted-view").classList.remove("hidden");
+          document.querySelector("#submitted-view").classList.add("flex");
+        }
+      });
+
+      // Mutation observer to check if the thank you view is visible
+      // If it is, then add the rating to the thank you view
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.type === "attributes" &&
+            mutation.attributeName === "class"
+          ) {
+            if (!mutation.target.classList.contains("hidden")) {
+              mutation.target.querySelector("#rating").textContent = rating;
+            }
+          }
+        });
+      });
+
+      observer.observe(submittedView, {
+        attributes: true,
+      });
+    </script>
+  </body>
+</html>
