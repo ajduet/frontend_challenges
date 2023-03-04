@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles.css" />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="font-space-grotesk">
+      <div id="form-view" class="grid grid-cols-1 md:grid-cols-3 min-h-screen">
+        <div
+          class="bg-[url('interactive-card-details-form/images/bg-main-desktop.png')] bg-no-repeat h-full bg-cover relative"
+        >
+          <div class="w-full h-full relative lg:left-1/2 md:left-[20%]">
+            <!-- card back -->
+            <div
+              class="bg-[url('interactive-card-details-form/images/bg-card-back.png')] bg-no-repeat bg-cover bg-center rounded-xl flex flex-col gap-4 text-white py-2 px-3 h-36 w-64 absolute top-1/2 left-1/2 transform -translate-x-[45%] -translate-y-[47%] md:translate-y-[5%] md:w-72 md:h-44 lg:w-80 lg:h-52"
+            >
+              <div
+                class="flex justify-end items-center text-[13px] h-full w-full px-4"
+              >
+                <span>000</span>
+              </div>
+            </div>
+            <!-- card front -->
+            <div
+              class="bg-[url('interactive-card-details-form/images/bg-card-front.png')] bg-no-repeat bg-cover bg-center rounded-xl flex flex-col gap-4 text-white py-2 px-3 h-36 w-64 absolute top-1/2 left-1/2 transform -translate-x-[55%] translate-y-[10%] md:-translate-x-[60%] md:-translate-y-[143%] md:w-72 md:h-44 lg:w-80 lg:h-52"
+            >
+              <div class="flex items-center gap-2 h-full w-full">
+                <div
+                  class="rounded-full h-8 w-8 bg-white border border-1 border-black"
+                ></div>
+                <div
+                  class="rounded-full h-4 w-4 bg-transparent border border-1 border-white"
+                ></div>
+              </div>
+              <div class="flex justify-between">
+                <span>0000</span>
+                <span>0000</span>
+                <span>0000</span>
+                <span>0000</span>
+              </div>
+              <div class="flex justify-between items-center text-[14px]">
+                <span>Jane Appleseed</span><span> 00/00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sm:col-span-2 mt-10">
+          <form
+            class="flex flex-col justify-center items-center h-full gap-6 w-full"
+          >
+            <div class="flex flex-col gap-2 w-80">
+              <label
+                for="cardholder-name"
+                class="uppercase font-bold text-[15px]"
+              >
+                Cardholder Name
+              </label>
+              <input
+                type="text"
+                name="cardholder-name"
+                id="cardholder-name"
+                placeholder="e.g. Jane Appleseed"
+                class="outline outline-light-grayish-violet outline-2 p-2 rounded-md"
+              />
+              <div class="hidden">
+                <span id="name-error" class="text-error-red">#message</span>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2 w-80">
+              <label for="card-number" class="uppercase font-bold text-[15px]">
+                Card Number
+              </label>
+              <input
+                type="text"
+                name="card-number"
+                id="card-number"
+                placeholder="1234 5678 9123 0000"
+                class="outline outline-light-grayish-violet outline-2 p-2 rounded-md"
+              />
+              <div class="hidden">
+                <span id="card-number-error" class="text-error-red"
+                  >#message</span
+                >
+              </div>
+            </div>
+            <div class="flex gap-8 w-80">
+              <div class="flex flex-col gap-2">
+                <label class="uppercase font-bold text-[15px]">
+                  Exp. Date&nbsp;&nbsp;&nbsp;(MM/YY)</label
+                >
+                <div class="flex gap-4">
+                  <input
+                    type="text"
+                    id="card-expiry-mm"
+                    name="card-expiry-mm"
+                    placeholder="MM"
+                    class="outline outline-light-grayish-violet outline-2 p-2 rounded-md w-[8ch]"
+                  />
+                  <input
+                    type="text"
+                    id="card-expiry-yy"
+                    name="card-expiry-yy"
+                    placeholder="YY"
+                    class="outline outline-light-grayish-violet outline-2 p-2 rounded-md w-[8ch]"
+                  />
+                </div>
+                <div class="hidden">
+                  <span id="expiry-error" class="text-error-red">#message</span>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2 w-full">
+                <label for="card-cvc" class="uppercase font-bold text-[15px]"
+                  >CVC</label
+                ><input
+                  type="text"
+                  id="card-cvc"
+                  name="card-cvc"
+                  placeholder="e.g. 123"
+                  class="outline outline-light-grayish-violet outline-2 p-2 rounded-md w-[6.5rem]"
+                />
+                <div class="hidden">
+                  <span id="cvc" class="text-error-red">#message</span>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex justify-center">
+              <button
+                type="submit"
+                class="bg-very-dark-violet text-white w-80 rounded-lg py-3"
+              >
+                Confirm
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Completed state start -->
+      <div id="submitted-view" class="hidden">
+        Thank you! We've added your card details Continue
+      </div>
+    </main>
+  </body>
+</html>
